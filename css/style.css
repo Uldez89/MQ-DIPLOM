@@ -252,14 +252,15 @@ body {
 
 .welcome-header {
 	position: relative;
-	top: 1.75rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center; 
 }
 
 .logo-link-start {
-	position: relative;
+	position: absolute;
+	top: 30px;
+	left: 0;
 	display: block;
 	min-width: 179px;
 	min-height: 41px;
@@ -267,8 +268,14 @@ body {
 	background-repeat: no-repeat;
 }
 
+.logo-link-text {
+	display: none;
+}
+
 .menu {
-	position: relative;
+	position: absolute;
+	top: 45px;
+	right: 0;
 	max-width: 447px;
 	font-size: 13px;
 	font-family: "OpenSans" , "Arial", sans-serif;
@@ -300,7 +307,7 @@ body {
 
 .welcome-title {     
 	max-width: 15.1em;
-	margin: 3.6em auto 0;
+	margin: 3.4em auto 0;
 	font-family: "OpenSans" , "Arial", sans-serif;
 	font-size: 45px;
 	line-height: 1.6em;
@@ -380,8 +387,15 @@ body {
 }
 
 .trend-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	max-width: 100%;
 	padding: 30px 30px;
 	border: 3px solid rgba(181, 159, 91,0.6);
+	box-sizing: border-box;
+	overflow: hidden;
 	z-index: 2;
 }
 
@@ -555,6 +569,7 @@ p {
 	flex-direction: column;
 	align-items: flex-start;
 	flex-wrap: nowrap;
+	width: 270px;
 }
 
 .new-posts {
@@ -1047,14 +1062,14 @@ p {
 
 	.container {
 		padding: 0 33px;
+	}	
+	
+	.menu {
+		display: none;
 	}
 
 	.form-hint {
 		margin-top: 20px;
-	}
-
-	.welcome-header {
-		top: 42px;
 	}
 
 	.logo-link-start {
@@ -1064,12 +1079,14 @@ p {
     margin-right: 20px;
 	}
 	
-	.header-button {
-		position: relative;
+	.header-button,
+	.header-button::before,
+	.header-button::after {
+		position: absolute;
+		top: 50px;
+		right: 0;
     min-width: 23px;
     height: 3px;
-		margin-top: 4px;
-		margin-left: 30px;
     background-color: #ffffff;
     outline: none;
     border: none;
@@ -1077,27 +1094,16 @@ p {
 
 	.header-button::before {
 		content: "";
-		position: absolute;
-    left: 0;
-		display: block;
-		min-width: 23px;
-		height: 3px;
-		margin: 4px 0;
-		background-color: #ffffff;
+		top: -8px;
 	}
 
 	.header-button::after {
 		content: "";
-		position: absolute;
-    bottom: 0;
-    left: 0;
-		width: 23px;
-		height: 3px;
-		margin: 6px 0;
-		background-color: #ffffff;
+		top: 8px;
 	}
 
 	.welcome-title {
+		margin-top: 4.5em;
 		font-size: 40px;
 	}
 
@@ -1112,6 +1118,7 @@ p {
 
 	.trend-part {
 		flex-direction: row;
+		justify-content: center;
 		align-items: flex-end;
 		min-width: calc(50% - 2px);
 		min-height: 247px;
@@ -1186,7 +1193,7 @@ p {
 	
 }
 
-@media (min-width:641px) and (max-width:1200px) , (orientation:landscape) {
+@media (min-width:641px) and (max-width:1200px) and (orientation:landscape) {
 	
 	.trends-container {
 		flex-wrap: nowrap;
@@ -1197,7 +1204,7 @@ p {
 	}
 }
 
-@media (min-width:641px) and (max-width:1200px) , (orientation:portrait) {
+@media (min-width:641px) and (max-width:1200px) and (orientation:portrait) {
 	.trends-container {
 		flex-wrap: wrap;
 	}
@@ -1248,19 +1255,21 @@ p {
 	}
 
 	.welcome-header {
-		justify-content: flex-end;
+		justify-content: center;
 	}
 
 	.menu {
 		display: none;
 	}
 
-	.header-button {
-		position: relative;
+	.header-button,
+	.header-button::before,
+	.header-button::after {
+		position: absolute;
+		top: 35px;
+		right: 0;
     min-width: 23px;
     height: 3px;
-		margin-top: 4px;
-		margin-left: 30px;
     background-color: #ffffff;
     outline: none;
     border: none;
@@ -1268,38 +1277,27 @@ p {
 
 	.header-button::before {
 		content: "";
-		position: absolute;
-    left: 0;
-		display: block;
-		min-width: 23px;
-		height: 3px;
-		margin: 4px 0;
-		background-color: #ffffff;
+		top: -8px;
 	}
 
 	.header-button::after {
 		content: "";
-		position: absolute;
-    bottom: 0;
-    left: 0;
-		width: 23px;
-		height: 3px;
-		margin: 6px 0;
-		background-color: #ffffff;
+		top: 8px;
 	}
 
 	.logo-link-start {
 		position: absolute;
-		top: 190px;
-		left: 9%;
-		width: 82%;
+		top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50% );
+		width: 267px;
 		min-height: 61px;
 	}
 
 	.welcome-title {
-		min-width: 84%;
+		max-width: 279px;
 		min-height: 91px;
-		margin-top: 300px;
+		margin-top: 11em;
 		font-size: 26px;
 	}
 
@@ -1358,10 +1356,6 @@ p {
 		font-size: 14px;
 	}
 
-	.search-bar {
-		margin-bottom: 44px;
-	}
-
 	.sidebar {
 		width: 100%;
 	}
@@ -1376,6 +1370,7 @@ p {
 
 	.search-bar {
 		width: 100%;
+		margin-bottom: 44px;
 	}
 
 	.mailing {
@@ -1416,7 +1411,7 @@ p {
 
 }
 
-@media (max-width: 640px), (orientation:landscape) {
+@media (max-width: 640px) and (orientation:landscape) {
 	.trends-container {
 		flex-wrap: wrap;
 	}
@@ -1426,7 +1421,7 @@ p {
 	}
 }
 
-@media (max-width: 640px), (orientation:portrait) {
+@media (max-width: 640px) and (orientation:portrait) {
 	.trend-part {
 		min-width: 100%;
 	}
